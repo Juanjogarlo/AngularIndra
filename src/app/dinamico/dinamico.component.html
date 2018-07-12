@@ -1,0 +1,9 @@
+<p>
+ <input *ngFor="let item of menu; let i = index;" type="button"
+ value = "{{item.texto}}" (click)="seleccionar(i)">
+</p>
+<!-- el ngcontainer es una directiva que no tiene correspondencia
+con una etiqueta HTML, se usa para pasar valores y tal..
+En este caso se usa para que se cargue el contenido dinámicamente
+en este contenedor -->
+<ng-container *ngComponentOutlet = "seleccionado"></ng-container>

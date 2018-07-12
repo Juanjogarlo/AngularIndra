@@ -1,0 +1,9 @@
+<div class="notificaciones" *ngIf="Notify.Listado.length > 0">
+  <ul>
+    <li *ngFor="let item of Notify.Listado; let i = index;">
+      {{item}}
+        <input type="button" value = "X" (click)="Notify.remove(i)">
+    </li>
+  </ul>
+  <input type="button" value="Cerrar" (click)="Notify.clear()">
+</div>

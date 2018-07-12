@@ -1,0 +1,47 @@
+<!-- binding unidiriccional -->
+<h1>Hola {{nombre}}</h1>
+<p>
+  <input type="text" [(ngModel)]="nombre">
+  <input type="button" value="saluda" (click)="saluda()">
+  <input type="button" value="despide" (click)="despide()">
+  <input type="button" value="diAlgo" (click)="diAlgo()">
+  <input type="button" value="cambia" (click)="cambia()">
+  <input type="button" value="Notifica" (click)="srv.add('Notificación desde demo')">
+</p>
+<!-- como es textContent, el valor no aparece -->
+<p [textContent]="resultado">kk</p>
+
+<!-- con hidden siempre existe pero no es visible -->
+<p [hidden]="!visible">Ahora me ves</p>
+<!-- con ngIf no siempre existe -->
+<p *ngIf="visible">Ahora existo</p>
+
+<my-sizer [(size)]="fuente"></my-sizer>
+<!-- dar estilos a un texto -->
+<p [ngClass]="estilos" [style.font-size.px]="fuente">
+  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit nihil ipsa ea ducimus veritatis esse cum? Culpa nihil ducimus adipisci excepturi. Dicta recusandae nam ex quisquam, maiores amet eos totam.</p>
+<!--  -->
+<p [class.visible]="visible">
+Es invisible
+</p>
+<p>
+  Calcula: 2+2 = {{(2+2) |number:'1.2-4'}} = {{calcula(2,2 |currency:'EUR':'symbol':'4.2-2')}}
+</p>
+
+<ul>
+   <li *ngFor="let p of listado; let ind=index; let fondo=odd;"
+  [style.background-color]="fondo? 'LightBlue' : 'Lavender'">
+     {{p.nombre|titlecase|elipsis:'15'}} ({{p.id}}) [Pos: {{ind +1}}]
+  </li>
+</ul>
+
+<p>
+  <select [(ngModel)]="idProvincia">
+    <option value="">Elige una opcion</option>
+    <option *ngFor="let p of listado" [value]="p.id">{{p.nombre}}</option>
+  </select>
+  Seleccionado: {{idProvincia}}
+  <input type="text" value="a coruña" #provincia>
+  <input type="button" value="Añadir" (click)="add(provincia.value)">
+</p>
+{{listado|json}}

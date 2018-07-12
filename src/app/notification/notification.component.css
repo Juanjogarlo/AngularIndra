@@ -1,0 +1,10 @@
+.notificaciones{
+  border: 1px solid red;
+  background: yellow;
+  color: red;
+}
+
+.notificaciones input{
+  color: green;
+  border-radius: 100%;
+}

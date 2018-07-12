@@ -1,0 +1,9 @@
+<h1>Mantenimiento de Personas</h1>
+<!-- Ngcontente para mostrar la pantalla que queremos -->
+<!-- con el ngswitch preguntamos por el modo -->
+<ng-container [ngSwitch]="VM.modo">
+    <app-personas-add *ngSwitchCase="'add'"></app-personas-add>
+    <app-personas-edit *ngSwitchCase="'edit'"></app-personas-edit>
+    <app-personas-view *ngSwitchCase="'view'"></app-personas-view>
+    <app-personas-list *ngSwitchDefault></app-personas-list>
+</ng-container>

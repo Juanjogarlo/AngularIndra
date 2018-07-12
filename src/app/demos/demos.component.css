@@ -1,0 +1,16 @@
+.importante{
+  color: blue;
+
+}
+
+.error{
+  color: red;
+}
+
+.remarcar{
+  font-style: italic;
+}
+
+.visible{
+  font-size: 2em;
+}

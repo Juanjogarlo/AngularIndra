@@ -1,0 +1,33 @@
+
+<table>
+  <tr>
+    <td><input type="button" value="7" (click)="ponPantalla(7)"></td>
+    <td><input type="button" value="8" (click)="ponPantalla(8)"></td>
+    <td><input type="button" value="9" (click)="ponPantalla(9)"></td>
+    <td><input type="button" value="+" (click)="opera('+')"></td>
+  </tr>
+  <tr>
+      <td><input type="button" value="4" (click)="ponPantalla(4)"></td>
+      <td><input type="button" value="5" (click)="ponPantalla(5)"></td>
+      <td><input type="button" value="6" (click)="ponPantalla(6)"></td>
+      <td><input type="button" value="/" (click)="opera('/')"></td>
+  </tr>
+  <tr>
+      <td><input type="button" value="1" (click)="ponPantalla(1)"></td>
+      <td><input type="button" value="2" (click)="ponPantalla(2)"></td>
+      <td><input type="button" value="3" (click)="ponPantalla(3)"></td>
+      <td><input type="button" value="-" (click)="opera('-')"></td>
+  </tr>
+  <tr>
+      <td><input type="button" value="0" (click)="ponPantalla(0)"></td>
+      <td><input type="button" value="."></td>
+      <td><input type="button" value="=" (click)="igual()"></td>
+      <td><input type="button" value="*" (click)="opera('*')"></td>
+  </tr>
+</table>
+<p [textContent]="salida">kk</p>
+<p>pantalla</p><p [textContent]="pantalla">kk</p>
+<p>operando</p><p [textContent]="operando">kk</p>
+<p>pantalla2</p><p [textContent]="pantalla2">kk</p>
+<p>resultado</p><p [textContent]="resultado">kk</p>
+<p>cache</p><p [textContent]="cache">kk</p>

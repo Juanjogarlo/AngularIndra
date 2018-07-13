@@ -56,6 +56,9 @@ export class PersonasDAOViewModelService {
   // contante del nombre de la propiedas que actua de PK
   protected pk = 'id';
 
+  // para el router
+  protected urlList = '/personas';
+
   constructor( protected out: LoggerService,
                protected notify: NotificationService,
               protected dao: PersonasDAOService) { }
@@ -124,7 +127,9 @@ export class PersonasDAOViewModelService {
   public cancel () {
     this.elemento = {};
     this.idOriginal = null;
-    this.list();
+    // para el router se cambia la forma de hacer un cancel
+    // this.list();
+    this.router.navigateByUrl(this.urlList);
   }
 
   public send () {

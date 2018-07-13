@@ -19,6 +19,19 @@ import { DinamicoComponent } from './dinamico/dinamico.component';
 import { PERSONAS_COMPONENT } from './personas/personas.component';
 import { environment } from '../environments/environment';
 import { PersonasViewModelService, PersonasDAOViewModelService } from './personas/personas.service';
+// para el routing de la aplicación
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
+
+// otros
+import localeEs from '@angular/common/locales/es';
+import localeEsExtra from '@angular/common/locales/es';
+import { registerLocaleData } from '../../node_modules/@angular/common';
+registerLocaleData(localeEs, 'es', localeEsExtra);
+
+
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +42,16 @@ import { PersonasViewModelService, PersonasDAOViewModelService } from './persona
     CalculadoraComponent,
     DinamicoComponent,
     PERSONAS_COMPONENT,
+    PageNotFoundComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     MyCoreModule,
     ComunesModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
 
   ],
   // este servicio es un ejemplo de un servicio que solo se quiere instanciar una vez

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonasViewModelService } from './personas.service';
+import { ActivatedRouteSnapshot, Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-personas',
@@ -30,6 +31,9 @@ export class PersonasListComponent implements OnInit {
   public get VM() { return this.vm; }
 
   ngOnInit() {
+    // se añade aquí desde que se pone el routerlink, ya que se busca desde
+    // la clase personaslistComponent
+    this.vm.list();
   }
 
 }
@@ -47,6 +51,9 @@ export class PersonasAddComponent implements OnInit {
   public get VM() { return this.vm; }
 
   ngOnInit() {
+    // se añade aquí desde que se pone el routerlink, ya que se busca desde
+    // la clase personasAddComponent
+    this.vm.list();
   }
 
 }
@@ -59,13 +66,27 @@ export class PersonasAddComponent implements OnInit {
 export class PersonasEditComponent implements OnInit {
 
   // necesitamos inyectar el viewmodel para acceder a todo lo que hemos hecho
-  constructor( private vm: PersonasViewModelService) { }
+  constructor( private vm: PersonasViewModelService,
+  // para activar las rutas
+               private router: Router, private route: ActivatedRoute) { }
 
   // preparado para hacer mantenimiento y tal
   public get VM() { return this.vm; }
 
+  // copiado del documento pagina 143
+  private obs$: any;
   ngOnInit() {
+  this.obs$ = this.route.paramMap.subscribe(
+    (params: ParamMap ) => {
+        const id = +params['id']; // (+) convertsstring'id' to a number
+        if (id) {
+          this.vm.view (id);
+        } else {
+        this.router.navigate(['/404.hrml']);
+        }
+      });
   }
+  ngOnDestroy() { this.obs$.unsubscribe(); }
 
 }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoggerService } from '../../my-core';
 import { NotificationService } from '../services/notification.service';
-import { environment } from '../../environments/environment.prod';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

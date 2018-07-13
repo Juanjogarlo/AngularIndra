@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 // para el formsModule
 import { FormsModule } from '@angular/forms';
 
+// para la conexión de http
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 // import del componente creado (si se usa el asistente, se importa solo al añadir el nombre en imports de abajo)
 import { MyCoreModule, LoggerService, ERROR_LEVEL } from '../my-core';
@@ -14,6 +17,8 @@ import { NotificationComponent } from './notification/notification.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { DinamicoComponent } from './dinamico/dinamico.component';
 import { PERSONAS_COMPONENT } from './personas/personas.component';
+import { environment } from '../environments/environment';
+import { PersonasViewModelService, PersonasDAOViewModelService } from './personas/personas.service';
 
 @NgModule({
   declarations: [
@@ -29,11 +34,15 @@ import { PERSONAS_COMPONENT } from './personas/personas.component';
     BrowserModule,
     FormsModule,
     MyCoreModule,
-    ComunesModule
+    ComunesModule,
+    HttpClientModule
+
   ],
   // este servicio es un ejemplo de un servicio que solo se quiere instanciar una vez
   providers: [LoggerService,
-    {provide: ERROR_LEVEL, useValue: 3},
+    {provide: ERROR_LEVEL, useValue: environment.errorLevel},
+    // para usar el personasDAOViewModelService en lugar de personasService
+    {provide: PersonasViewModelService, useClass: PersonasDAOViewModelService}
   ],
   bootstrap: [AppComponent]
 })
